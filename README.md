@@ -53,7 +53,7 @@ Default value: `false`
 
 Set to true to overwrite a, for whatever reason, already existing CSP meta tag.
 
-### `hashingMethod: 'sha256' | 'sha384' | 'sha512'
+### `hashingMethod: 'sha256' | 'sha384' | 'sha512'`
 
 Default value: `sha256`
 
