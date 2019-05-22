@@ -1,0 +1,25 @@
+{
+  "name": "react-static-plugin-csp-meta-tags",
+  "version": "0.0.1",
+  "description": "A react-static plugin that adds Content-Security-Policy meta tags to your site",
+  "main": "dist/node.api.js",
+  "author": "Yannik Wissner <hello@yannik.im>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "watch": "yarn build --watch",
+    "build": "babel src --out-dir ./dist",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.4.4",
+    "@babel/core": "7.4.5",
+    "@babel/preset-env": "7.4.5",
+    "@babel/preset-react": "7.0.0",
+    "jest": "24.8.0"
+  },
+  "dependencies": {
+    "cheerio": "1.0.0-rc.3",
+    "lodash.flatten": "4.4.0"
+  }
+}
