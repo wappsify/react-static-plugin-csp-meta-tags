@@ -62,6 +62,9 @@ export default options => ({
             })
             .get()
         );
+
+        // find link preload tags, remove them (preload does not work with SRI)
+        $(`link[rel='preload'][as='script']`).remove();
       }
 
       const metaTag = cheerio.load(
