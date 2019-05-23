@@ -1,6 +1,6 @@
 {
   "name": "react-static-plugin-csp-meta-tags",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "A react-static plugin that adds Content-Security-Policy meta tags to your site",
   "keywords": [
     "react-static",
