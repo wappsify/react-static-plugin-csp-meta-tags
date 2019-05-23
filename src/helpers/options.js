@@ -7,6 +7,7 @@ const defaultPolicy = {
 
 export const defaultOptions = {
   overwriteExisting: false,
+  hashExternal: false,
   hashingMethod: 'sha256',
   policy: defaultPolicy
 };

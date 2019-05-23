@@ -33,24 +33,26 @@ export default options => ({
         .map((_, elem) => getHash($(elem, options.hashingMethod).html()))
         .get();
 
-      // now, find all the external scripts, we want to hash those aswell
-      const scriptTags = $('script[src]');
-      shas['script-src'].push(
-        ...scriptTags
-          .map((_, elem) => {
-            const { src } = elem.attribs;
-            const { ASSETS: assetsPath } = paths;
-            try {
-              const filepath = `${assetsPath}${src}`;
-              const file = fs.readFileSync(filepath, 'utf8');
+      if (options.hashExternal) {
+        // now, find all the external scripts, we want to hash those aswell
+        const scriptTags = $('script[src]');
+        shas['script-src'].push(
+          ...scriptTags
+            .map((_, elem) => {
+              const { src } = elem.attribs;
+              const { ASSETS: assetsPath } = paths;
+              try {
+                const filepath = `${assetsPath}${src}`;
+                const file = fs.readFileSync(filepath, 'utf8');
 
-              return getHash(file, options.hashingMethod);
-            } catch (error) {
-              console.error(error);
-            }
-          })
-          .get()
-      );
+                return getHash(file, options.hashingMethod);
+              } catch (error) {
+                console.error(error);
+              }
+            })
+            .get()
+        );
+      }
 
       const metaTag = cheerio.load(
         '<meta http-equiv="Content-Security-Policy">'

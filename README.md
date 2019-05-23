@@ -53,6 +53,12 @@ Default value: `false`
 
 Set to true to overwrite a, for whatever reason, already existing CSP meta tag.
 
+### `hashExternal: boolean`
+
+Default value: `false`
+
+Set to true to create hashes not just for inline script tags, but for external script files as well.
+
 ### `hashingMethod: 'sha256' | 'sha384' | 'sha512'`
 
 Default value: `sha256`
