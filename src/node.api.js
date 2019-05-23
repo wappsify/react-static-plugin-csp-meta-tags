@@ -7,7 +7,7 @@ import createPolicyObject from './helpers/createPolicyObject';
 import fs from 'fs';
 
 export default options => ({
-  beforeDocumentToFile: (html, { stage, config: { paths } }) => {
+  beforeDocumentToFile: (html, { stage, config: { paths, assetsPath } }) => {
     if (stage === 'prod') {
       // merge options with defaultOptions, so all optional fields are also covered
       options = {
@@ -39,12 +39,16 @@ export default options => ({
         shas['script-src'].push(
           ...scriptTags
             .map((_, elem) => {
-              const { src } = elem.attribs;
-              const { ASSETS: assetsPath } = paths;
+              let { src } = elem.attribs;
+              // if an assetsPath is set, remove it from the src attribute
+              // because right now we want to open the file locally
+              if (assetsPath) {
+                src = src.replace(assetsPath, '/');
+              }
+              const { ASSETS } = paths;
               try {
-                const filepath = `${assetsPath}${src}`;
+                const filepath = `${ASSETS}${src}`;
                 const file = fs.readFileSync(filepath, 'utf8');
-
                 return getHash(file, options.hashingMethod);
               } catch (error) {
                 console.error(error);
