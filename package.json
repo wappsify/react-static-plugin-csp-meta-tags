@@ -15,7 +15,7 @@
   "private": false,
   "scripts": {
     "watch": "yarn build --watch",
-    "build": "babel src --out-dir ./dist",
+    "build": "babel src --out-dir ./dist --ignore src/__tests__",
     "test": "jest"
   },
   "devDependencies": {
