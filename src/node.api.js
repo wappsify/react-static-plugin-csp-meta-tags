@@ -26,11 +26,11 @@ export default options => ({
 
       const inlineScriptTags = $('script:not([src])');
       shas['script-src'] = inlineScriptTags
-        .map((_, elem) => getHash($(elem, options.hashingMethod).html()))
+        .map((_, elem) => `'${getHash($(elem, options.hashingMethod).html())}'`)
         .get();
       const inlineStyleTags = $('style:not([href])');
       shas['style-src'] = inlineStyleTags
-        .map((_, elem) => getHash($(elem, options.hashingMethod).html()))
+        .map((_, elem) => `'${getHash($(elem, options.hashingMethod).html())}'`)
         .get();
 
       if (options.hashExternal) {
@@ -45,11 +45,17 @@ export default options => ({
               if (assetsPath) {
                 src = src.replace(assetsPath, '/');
               }
+
               const { ASSETS } = paths;
               try {
                 const filepath = `${ASSETS}${src}`;
                 const file = fs.readFileSync(filepath, 'utf8');
-                return getHash(file, options.hashingMethod);
+                const hash = getHash(file, options.hashingMethod);
+
+                // add integrity attribute to script tags
+                $(elem).attr('integrity', hash);
+
+                return `'${hash}'`;
               } catch (error) {
                 console.error(error);
               }
