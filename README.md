@@ -66,3 +66,9 @@ Default value: `sha256`
 ### `policy: object`
 
 With this you can pass in your own custom policy, which will overwrite the default policy. Note that you can pass in either a string or an array of strings to each key in the policy object.
+
+### `crossorigin: 'anonymous' | 'use-credentials'`
+
+Default value: `undefined`
+
+You may pass in an optional crossorigin attribute for the scripts tags which will have `integrity` attributes appended to them. This is useful if your site is behind Basic Authorization, for example. By default, no `crossorigin` attribute is added at all!

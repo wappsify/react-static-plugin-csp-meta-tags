@@ -9,5 +9,6 @@ export const defaultOptions = {
   overwriteExisting: false,
   hashExternal: false,
   hashingMethod: 'sha256',
-  policy: defaultPolicy
+  policy: defaultPolicy,
+  crossorigin: undefined
 };

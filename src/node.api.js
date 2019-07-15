@@ -55,6 +55,11 @@ export default options => ({
                 // add integrity attribute to script tags
                 $(elem).attr('integrity', hash);
 
+                // if crossorigin is set in options, add as attribute
+                if (typeof options.crossorigin === 'string') {
+                  $(elem).attr('crossorigin', options.crossorigin);
+                }
+
                 return `'${hash}'`;
               } catch (error) {
                 console.error(error);
