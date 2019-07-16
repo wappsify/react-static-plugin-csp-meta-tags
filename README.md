@@ -72,3 +72,9 @@ With this you can pass in your own custom policy, which will overwrite the defau
 Default value: `undefined`
 
 You may pass in an optional crossorigin attribute for the scripts tags which will have `integrity` attributes appended to them. This is useful if your site is behind Basic Authorization, for example. By default, no `crossorigin` attribute is added at all!
+
+### `reportOnly: boolean`
+
+Default value: `false`
+
+You may set this to `true` to insert a `Content-Security-Policy-Report-Only` instead of a `Content-Security-Policy` meta tag.

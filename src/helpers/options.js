@@ -10,5 +10,6 @@ export const defaultOptions = {
   hashExternal: false,
   hashingMethod: 'sha256',
   policy: defaultPolicy,
-  crossorigin: undefined
+  crossorigin: undefined,
+  reportOnly: false
 };

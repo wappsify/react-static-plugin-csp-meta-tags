@@ -73,7 +73,9 @@ export default options => ({
       }
 
       const metaTag = cheerio.load(
-        '<meta http-equiv="Content-Security-Policy">'
+        `<meta http-equiv="Content-Security-Policy${
+          options.reportOnly ? '-Report-Only' : ''
+        }">`
       )('meta');
 
       metaTag.prependTo($('head'));
