@@ -26,11 +26,11 @@ export default options => ({
 
       const inlineScriptTags = $('script:not([src])');
       shas['script-src'] = inlineScriptTags
-        .map((_, elem) => `'${getHash($(elem, options.hashingMethod).html())}'`)
+        .map((_, elem) => `'${getHash($(elem).html(), options.hashingMethod)}'`)
         .get();
       const inlineStyleTags = $('style:not([href])');
       shas['style-src'] = inlineStyleTags
-        .map((_, elem) => `'${getHash($(elem, options.hashingMethod).html())}'`)
+        .map((_, elem) => `'${getHash($(elem).html(), options.hashingMethod)}'`)
         .get();
 
       if (options.hashExternal) {
