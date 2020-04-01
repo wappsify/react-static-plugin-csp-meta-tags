@@ -1,4 +1,4 @@
-import flatten from 'lodash.flatten';
+import flatten from "lodash.flatten";
 
 export default (optionsPolicy, shas) => {
   Object.keys(shas).forEach(key => {
@@ -6,7 +6,7 @@ export default (optionsPolicy, shas) => {
   });
   // turn all keys into arrays
   Object.keys(optionsPolicy).forEach(key => {
-    if (typeof optionsPolicy[key] === 'string') {
+    if (typeof optionsPolicy[key] === "string") {
       optionsPolicy[key] = [optionsPolicy[key]];
     }
   });
